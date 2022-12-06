@@ -1,0 +1,1 @@
+Get-ADUser -Filter {Enabled -eq $TRUE} -SearchBase 'OU=TESTPRIVOU,DC=TESTDC,DC=com' -Properties LastLogonDate | Where-Object {$_.LastLogonDate -lt (Get-Date).AddDays(-45)} | Disable-ADAccount 
